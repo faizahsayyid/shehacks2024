@@ -41,21 +41,6 @@ const BudgetSettings = () => {
           </Flex>
         </Flex>
       </CardBody>
-      {/* <Heading size="sm" mt={2}>
-    Tracked Platforms
-  </Heading>
-  <Heading size="xs" mt={2}>
-    TikTok
-  </Heading>
-  <Heading size="xs" mt={2}>
-    Instagram
-  </Heading>
-  <Heading size="xs" mt={2}>
-    Netflix
-  </Heading>
-  <Heading size="xs" mt={2}>
-    Chrome
-  </Heading> */}
     </Card>
   );
 };

@@ -1,7 +1,8 @@
-import { Box, Card, Heading } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import React from "react";
 import BudgetSettings from "../../components/BudgetSettings";
 import Tracking from "../../components/Tracking";
+import Interests from "../../components/Interests";
 
 const Settings = () => {
   return (
@@ -9,11 +10,7 @@ const Settings = () => {
       <Heading mb={5}>Settings</Heading>
       <BudgetSettings />
       <Tracking />
-      <Card p={5}>
-        <Heading size="md" mt={3}>
-          Interests
-        </Heading>
-      </Card>
+      <Interests />
     </Box>
   );
 };
