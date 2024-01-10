@@ -12,6 +12,7 @@ const runAIAPI = async (accountId, apiToken, prompt) => {
           Authorization: `Bearer ${apiToken}`,
           'Content-Type': 'application/json',
         },
+        timeout: 500000, // set a timeout value in milliseconds
       }
     );
 
