@@ -2,36 +2,48 @@ import React from "react";
 import Section from "./components/Section";
 import Steps from "./components/Steps";
 import { Button, Flex } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { getLesson, completeLesson } from "../../api/supabase";
 
 const Lesson = () => {
   const [activeStep, setActiveStep] = React.useState(0);
   const navigate = useNavigate();
+  const { id } = useParams();
+  const [lesson, setLesson] = React.useState({
+    topic: "",
+    overview: "",
+    activate_your_knowledge: "",
+    expand_your_knowledge: "",
+    reflection_and_next_steps: "",
+  });
+
+  React.useEffect(() => {
+    getLesson(id).then((res) => {
+      setLesson(res);
+    });
+  }, [id]);
 
   const lessonSections = [
     {
       headerText: "Overview",
-      bodyText: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl vitae aliquam aliquam, justo odio consequat quam, quis pretium quam elit vitae nisi. Aliquam erat volutpat. Nulla facilisi. Sed euismod, sem quis aliquet ultricies, odio nisl tincidunt massa, sit amet aliquam nisi nunc vitae mauris. Donec euismod, nisl vitae aliquam aliquam, justo odio consequat quam, quis pretium quam elit vitae nisi. Aliquam erat volutpat. Nulla facilisi. 
-        
-        Sed euismod, sem quis aliquet ultricies, odio nisl tincidunt massa, sit amet aliquam nisi nunc vitae mauris. Donec euismod, nisl vitae aliquam aliquam, justo odio consequat quam, quis pretium quam elit vitae`,
+      bodyText: lesson.overview,
     },
     {
       headerText: "Activate Your Knowledge",
-      bodyText: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl vitae aliquam aliquam, justo odio consequat quam, quis pretium quam elit vitae nisi. Aliquam erat volutpat. Nulla facilisi. Sed euismod, sem quis aliquet ultricies, odio nisl tincidunt massa, sit amet aliquam nisi nunc vitae mauris. Donec euismod, nisl vitae aliquam aliquam, justo odio consequat quam, quis pretium quam elit vitae nisi. Aliquam erat volutpat. Nulla facilisi. 
-        
-        Sed euismod, sem quis aliquet ultricies, odio nisl tincidunt massa, sit amet aliquam nisi nunc vitae mauris. Donec euismod, nisl vitae aliquam aliquam, justo odio consequat quam, quis pretium quam elit vitae`,
+      bodyText: lesson.activate_your_knowledge,
     },
     {
       headerText: "Expand Your Knowledge",
-      bodyText: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl vitae aliquam aliquam, justo odio consequat quam, quis pretium quam elit vitae nisi. Aliquam erat volutpat. Nulla facilisi. Sed euismod, sem quis aliquet ultricies, odio nisl tincidunt massa, sit amet aliquam nisi nunc vitae mauris. Donec euismod, nisl vitae aliquam`,
+      bodyText: lesson.expand_your_knowledge,
     },
     {
       headerText: "Next Steps",
-      bodyText: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl vitae aliquam aliquam, justo odio consequat quam, quis pretium quam elit vitae nisi. Aliquam erat volutpat. Nulla facilisi. Sed euismod, sem quis aliquet ultricies, odio nisl tincidunt massa, sit amet aliquam nisi nunc vitae mauris. Donec euismod, nisl vitae aliquam`,
+      bodyText: lesson.reflection_and_next_steps,
     },
   ];
 
-  const onComplete = () => {
+  const onComplete = async () => {
+    await completeLesson(id);
     navigate("/");
   };
 

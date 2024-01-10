@@ -18,7 +18,7 @@ const LessonCard = ({ id, title, summary, isComplete }) => {
   const navigate = useNavigate();
   return (
     <Card p={5} onClick={() => navigate(`/lesson/${id}`)} cursor="pointer">
-      <CardHeader>
+      <CardHeader flex={1}>
         <Flex alignItems="center" gap={4}>
           {isComplete ? (
             <CheckCircleIcon fontSize="2rem" color="green.500" />

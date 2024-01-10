@@ -33,8 +33,8 @@ const Home = () => {
             </Heading>
             <Button
               size="lg"
-              // bgColor="purple.100"
-              // _hover={{ bgColor: "purple.200" }}
+              bgColor="purple.100"
+              _hover={{ bgColor: "purple.200" }}
               onClick={() => {
                 window.location.replace("/getting-started");
               }}

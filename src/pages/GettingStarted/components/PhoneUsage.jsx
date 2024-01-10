@@ -30,8 +30,8 @@ const PhoneUsage = ({ budget, setBudget }) => {
             <Input
               type="number"
               w="90%"
-              defaultValue={budget}
-              onChange={(e) => setBudget(e.target.value)}
+              defaultValue={parseInt(budget)}
+              onChange={(e) => setBudget(parseInt(e.target.value))}
             />
             <Text>hrs</Text>
           </Flex>

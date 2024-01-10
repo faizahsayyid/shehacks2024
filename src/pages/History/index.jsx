@@ -1,43 +1,31 @@
 import React from "react";
 import { Flex, Heading } from "@chakra-ui/react";
 import LessonCard from "../../components/LessonCard";
+import { getAllLessons } from "../../api/supabase";
 
 const History = () => {
+  const [lessons, setLessons] = React.useState([]);
+
+  React.useEffect(() => {
+    getAllLessons().then((lessons) => {
+      setLessons(lessons);
+    });
+  }, []);
+
   return (
     <Flex width="100%" flexDir="column" gap={4}>
       <Heading ml={3} mt={10}>
-        Past Lessons
+        All Lessons
       </Heading>
-      <LessonCard
-        id="1"
-        title="The French Revolution"
-        summary=""
-        isComplete={true}
-      />
-      <LessonCard
-        id="1"
-        title="The French Revolution"
-        summary=""
-        isComplete={true}
-      />
-      <LessonCard
-        id="1"
-        title="The French Revolution"
-        summary=""
-        isComplete={true}
-      />
-      <LessonCard
-        id="1"
-        title="The French Revolution"
-        summary=""
-        isComplete={true}
-      />
-      <LessonCard
-        id="1"
-        title="The French Revolution"
-        summary=""
-        isComplete={true}
-      />
+      {lessons.map((lesson) => (
+        <LessonCard
+          key={lesson.id}
+          id={lesson.id}
+          title={lesson.topic}
+          summary={lesson.overview}
+          isComplete={lesson.is_complete}
+        />
+      ))}
     </Flex>
   );
 };
