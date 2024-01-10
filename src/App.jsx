@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Root from "./pages/Root";
 import Settings from "./pages/Settings";
 import Lesson from "./pages/Lesson";
+import History from "./pages/History";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/lesson/:id",
         element: <Lesson />,
+      },
+      {
+        path: "/history",
+        element: <History />,
       },
     ],
   },
