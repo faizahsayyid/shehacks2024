@@ -6,6 +6,7 @@ import Root from "./pages/Root";
 import Settings from "./pages/Settings";
 import Lesson from "./pages/Lesson";
 import History from "./pages/History";
+import GettingStarted from "./pages/GettingStarted";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/history",
         element: <History />,
+      },
+      {
+        path: "/getting-started",
+        element: <GettingStarted />,
       },
     ],
   },
