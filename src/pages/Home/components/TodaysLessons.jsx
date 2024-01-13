@@ -9,6 +9,7 @@ const TodaysLessons = () => {
         Today's Lessons
       </Heading>
       <LessonCard
+        id="1"
         title="The French Revolution"
         summary="In this dynamic lesson on the French Revolution, you will delve into the
         tumultuous events of the late 18th century that reshaped France and
@@ -20,6 +21,7 @@ const TodaysLessons = () => {
         isComplete={false}
       />
       <LessonCard
+        id="2"
         title="The French Revolution"
         summary="In this dynamic lesson on the French Revolution, you will delve into the
         tumultuous events of the late 18th century that reshaped France and
@@ -31,6 +33,7 @@ const TodaysLessons = () => {
         isComplete={false}
       />
       <LessonCard
+        id="3"
         title="The French Revolution"
         summary="In this dynamic lesson on the French Revolution, you will delve into the
         tumultuous events of the late 18th century that reshaped France and

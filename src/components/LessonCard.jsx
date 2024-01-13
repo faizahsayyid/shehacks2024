@@ -12,10 +12,12 @@ import PropTypes from "prop-types";
 import React from "react";
 import { CheckCircleIcon, Icon } from "@chakra-ui/icons";
 import { FaBookOpen } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-const LessonCard = ({ title, summary, isComplete }) => {
+const LessonCard = ({ id, title, summary, isComplete }) => {
+  const navigate = useNavigate();
   return (
-    <Card p={5}>
+    <Card p={5} onClick={() => navigate(`/lesson/${id}`)} cursor="pointer">
       <CardHeader>
         <Flex alignItems="center" gap={4}>
           {isComplete ? (
@@ -39,6 +41,7 @@ const LessonCard = ({ title, summary, isComplete }) => {
 };
 
 LessonCard.propTypes = {
+  id: PropTypes.string,
   title: PropTypes.string,
   summary: PropTypes.string,
   isComplete: PropTypes.bool,
