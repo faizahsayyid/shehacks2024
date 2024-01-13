@@ -13,7 +13,7 @@ import {
 import PropTypes from "prop-types";
 import Logo from "./Logo";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { FaHome, FaVideo, FaBookmark, FaHistory, FaCog } from "react-icons/fa";
+import { FaHome, FaVideo, FaHistory, FaCog } from "react-icons/fa";
 
 const SideBarContent = ({ onClick }) => (
   <VStack alignItems="start" color="gray.800">
@@ -43,19 +43,7 @@ const SideBarContent = ({ onClick }) => (
     </Button>
     <Button
       as={ReactRouterLink}
-      to="/saved"
-      w="100%"
-      onClick={onClick}
-      variant="ghost"
-      justifyContent="flex-start"
-      _hover={{ bg: "purple.200" }}
-    >
-      <FaBookmark />
-      <Text ml={3}>Saved</Text>
-    </Button>
-    <Button
-      as={ReactRouterLink}
-      to="/entertainment"
+      to="/history"
       w="100%"
       onClick={onClick}
       variant="ghost"
@@ -63,7 +51,7 @@ const SideBarContent = ({ onClick }) => (
       _hover={{ bg: "purple.200" }}
     >
       <FaHistory />
-      <Text ml={3}>Recent</Text>
+      <Text ml={3}>History</Text>
     </Button>
     <Button
       as={ReactRouterLink}
