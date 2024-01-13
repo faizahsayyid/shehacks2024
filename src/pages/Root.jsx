@@ -12,6 +12,7 @@ const Root = () => {
   const variants = useBreakpointValue({ base: smVariant, md: mdVariant });
 
   const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
   return (
     <>
@@ -21,12 +22,17 @@ const Root = () => {
           onShowSidebar={toggleSidebar}
         />
       </Box>
-      <SideBar
-        variant={variants?.navigation}
-        isOpen={isSidebarOpen}
-        onClose={toggleSidebar}
-      />
-      <Box ml={!variants?.navigationButton && 250} mt="calc(4em + 40px)">
+      {isLoggedIn && (
+        <SideBar
+          variant={variants?.navigation}
+          isOpen={isSidebarOpen}
+          onClose={toggleSidebar}
+        />
+      )}
+      <Box
+        ml={!variants?.navigationButton && isLoggedIn ? 250 : 0}
+        mt="calc(4em + 40px)"
+      >
         <Container maxW="container.lg">
           <Outlet />
         </Container>

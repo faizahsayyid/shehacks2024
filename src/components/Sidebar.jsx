@@ -13,7 +13,7 @@ import {
 import PropTypes from "prop-types";
 import Logo from "./Logo";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { FaHome, FaVideo, FaHistory, FaCog } from "react-icons/fa";
+import { FaHome, FaPowerOff, FaHistory, FaCog } from "react-icons/fa";
 
 const SideBarContent = ({ onClick }) => (
   <VStack alignItems="start" color="gray.800">
@@ -29,7 +29,7 @@ const SideBarContent = ({ onClick }) => (
       <FaHome />
       <Text ml={3}>Home</Text>
     </Button>
-    <Button
+    {/* <Button
       as={ReactRouterLink}
       to="/entertainment"
       w="100%"
@@ -40,7 +40,7 @@ const SideBarContent = ({ onClick }) => (
     >
       <FaVideo />
       <Text ml={3}>Entertainment</Text>
-    </Button>
+    </Button> */}
     <Button
       as={ReactRouterLink}
       to="/history"
@@ -64,6 +64,19 @@ const SideBarContent = ({ onClick }) => (
     >
       <FaCog />
       <Text ml={3}>Settings</Text>
+    </Button>
+    <Button
+      w="100%"
+      onClick={() => {
+        localStorage.clear();
+        window.location.reload();
+      }}
+      variant="ghost"
+      justifyContent="flex-start"
+      _hover={{ bg: "purple.200" }}
+    >
+      <FaPowerOff />
+      <Text ml={3}>Log Out</Text>
     </Button>
   </VStack>
 );
