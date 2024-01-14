@@ -6,6 +6,37 @@ import DarkAgoraLogo from "../../assets/dark-logo.svg";
 
 const Home = () => {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const hasSeenNotification =
+    localStorage.getItem("hasSeenNotification") === "true";
+
+  const showNotification = () => {
+    if (!("Notification" in window)) {
+      return;
+    }
+
+    Notification.requestPermission().then((permission) => {
+      if (permission === "granted" && !hasSeenNotification) {
+        console.log("Notification granted");
+        const notificationOptions = {
+          body: "Your daily lessons are ready!",
+          icon: `/agora-icon.png`,
+        };
+
+        const notif = new Notification("agora", notificationOptions);
+        console.log(
+          notif.addEventListener("show", () => {
+            console.log("Notification shown");
+          })
+        );
+
+        localStorage.setItem("hasSeenNotification", "true");
+      }
+    });
+  };
+
+  React.useEffect(() => {
+    showNotification();
+  }, []);
 
   if (isLoggedIn) {
     return (
