@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Card,
   Heading,
@@ -14,6 +14,8 @@ import PropTypes from "prop-types";
 
 const BudgetSettings = ({ budget, setBudget }) => {
   const [value, setValue] = React.useState(budget);
+  useEffect(() => setValue(budget), [budget]);
+
   return (
     <Card p={2} mb={5}>
       <CardHeader>
@@ -37,14 +39,21 @@ const BudgetSettings = ({ budget, setBudget }) => {
               <Input
                 type="number"
                 w="200px"
-                defaultValue={budget}
-                onChange={(e) => setValue(e.target.value)}
+                value={parseInt(value)}
+                onChange={(e) => {
+                  setValue(parseInt(e.target.value));
+                }}
               />
               <Text fontWeight={700} color="gray.500">
                 hrs
               </Text>
             </Flex>
-            <Button bgColor="purple.100" onClick={() => setBudget(value)}>
+            <Button
+              bgColor="purple.100"
+              onClick={() => {
+                setBudget(value);
+              }}
+            >
               Save
             </Button>
           </Flex>

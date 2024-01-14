@@ -1,50 +1,32 @@
 import React from "react";
 import LessonCard from "../../../components/LessonCard";
-import { Heading, VStack } from "@chakra-ui/react";
+import { Heading, Flex } from "@chakra-ui/react";
+import { getTodaysLessons } from "../../../api/supabase";
 
 const TodaysLessons = () => {
+  const [lessons, setLessons] = React.useState([]);
+
+  React.useEffect(() => {
+    getTodaysLessons().then((lessons) => {
+      setLessons(lessons);
+    });
+  }, []);
+
   return (
-    <VStack alignItems="flex-start" gap={4}>
+    <Flex width="100%" flexDir="column" gap={4}>
       <Heading ml={3} mt={10}>
         Today's Lessons
       </Heading>
-      <LessonCard
-        id="1"
-        title="The French Revolution"
-        summary="In this dynamic lesson on the French Revolution, you will delve into the
-        tumultuous events of the late 18th century that reshaped France and
-        reverberated globally. Through engaging discussions and interactive
-        activities, you will explore the causes, key figures, and the profound
-        socio-political changes that emerged from this pivotal period, gaining a
-        deeper understanding of the revolution's lasting impact on modern
-        history."
-        isComplete={false}
-      />
-      <LessonCard
-        id="2"
-        title="The French Revolution"
-        summary="In this dynamic lesson on the French Revolution, you will delve into the
-        tumultuous events of the late 18th century that reshaped France and
-        reverberated globally. Through engaging discussions and interactive
-        activities, you will explore the causes, key figures, and the profound
-        socio-political changes that emerged from this pivotal period, gaining a
-        deeper understanding of the revolution's lasting impact on modern
-        history."
-        isComplete={false}
-      />
-      <LessonCard
-        id="3"
-        title="The French Revolution"
-        summary="In this dynamic lesson on the French Revolution, you will delve into the
-        tumultuous events of the late 18th century that reshaped France and
-        reverberated globally. Through engaging discussions and interactive
-        activities, you will explore the causes, key figures, and the profound
-        socio-political changes that emerged from this pivotal period, gaining a
-        deeper understanding of the revolution's lasting impact on modern
-        history."
-        isComplete={false}
-      />
-    </VStack>
+      {lessons.map((lesson) => (
+        <LessonCard
+          key={lesson.id}
+          id={lesson.id}
+          title={lesson.topic}
+          summary={lesson.overview}
+          isComplete={lesson.is_complete}
+        />
+      ))}
+    </Flex>
   );
 };
 

@@ -10,14 +10,31 @@ import {
   Divider,
   Box,
   Switch,
+  Button,
+  CardFooter,
 } from "@chakra-ui/react";
 import { FaChartBar } from "react-icons/fa";
 import TikTokLogo from "../assets/tiktok.png";
 import InstagramLogo from "../assets/instagram.png";
 import NeflixLogo from "../assets/netflix.jpeg";
 import ChromeLogo from "../assets/chrome.png";
+import PropTypes from "prop-types";
 
-const Tracking = () => {
+const Tracking = ({ privacySettings, setPrivacySettings }) => {
+  const [value, setValue] = React.useState(privacySettings);
+  React.useEffect(() => {
+    console.log("privacySettings", privacySettings);
+    setValue(privacySettings);
+  }, [privacySettings]);
+
+  const onSave = () => {
+    setPrivacySettings(value);
+  };
+
+  const onChange = (e) => {
+    setValue({ ...value, [e.target.name]: e.target.checked });
+  };
+
   return (
     <Card p={2} mb={5}>
       <CardHeader>
@@ -50,7 +67,11 @@ const Tracking = () => {
               <Text color="gray.500">
                 Allow time spent on the app to be tracked
               </Text>
-              <Switch />
+              <Switch
+                isChecked={value ? value.tiktokTime : false}
+                name="tiktokTime"
+                onChange={onChange}
+              />
             </Flex>
             <Flex
               justifyContent="space-between"
@@ -58,7 +79,11 @@ const Tracking = () => {
               width="100%"
             >
               <Text color="gray.500">Allow app interactions to be tracked</Text>
-              <Switch />
+              <Switch
+                isChecked={value ? value.tiktokInteractions : false}
+                name="tiktokInteractions"
+                onChange={onChange}
+              />
             </Flex>
           </Box>
         </Flex>
@@ -84,7 +109,11 @@ const Tracking = () => {
               <Text color="gray.500">
                 Allow time spent on the app to be tracked
               </Text>
-              <Switch />
+              <Switch
+                name="igTime"
+                onChange={onChange}
+                isChecked={value ? value.igTime : false}
+              />
             </Flex>
             <Flex
               justifyContent="space-between"
@@ -92,7 +121,11 @@ const Tracking = () => {
               width="100%"
             >
               <Text color="gray.500">Allow app interactions to be tracked</Text>
-              <Switch />
+              <Switch
+                name="igInteractions"
+                onChange={onChange}
+                isChecked={value ? value.igInteractions : false}
+              />
             </Flex>
           </Box>
         </Flex>
@@ -118,7 +151,11 @@ const Tracking = () => {
               <Text color="gray.500">
                 Allow time spent on the app to be tracked
               </Text>
-              <Switch />
+              <Switch
+                name="netflixTime"
+                onChange={onChange}
+                isChecked={value ? value.netflixTime : false}
+              />
             </Flex>
             <Flex
               justifyContent="space-between"
@@ -126,7 +163,11 @@ const Tracking = () => {
               width="100%"
             >
               <Text color="gray.500">Allow app interactions to be tracked</Text>
-              <Switch />
+              <Switch
+                name="netflixInteractions"
+                onChange={onChange}
+                isChecked={value ? value.netflixInteractions : false}
+              />
             </Flex>
           </Box>
         </Flex>
@@ -152,7 +193,11 @@ const Tracking = () => {
               <Text color="gray.500">
                 Allow time spent on the app to be tracked
               </Text>
-              <Switch />
+              <Switch
+                name="chromeTime"
+                onChange={onChange}
+                isChecked={value ? value.chromeTime : false}
+              />
             </Flex>
             <Flex
               justifyContent="space-between"
@@ -160,13 +205,27 @@ const Tracking = () => {
               width="100%"
             >
               <Text color="gray.500">Allow app interactions to be tracked</Text>
-              <Switch />
+              <Switch
+                name="chromeInteractions"
+                onChange={onChange}
+                isChecked={value ? value.chromeInteractions : false}
+              />
             </Flex>
           </Box>
         </Flex>
       </CardBody>
+      <CardFooter justifyContent="flex-end">
+        <Button bgColor="purple.100" onClick={onSave}>
+          Save
+        </Button>
+      </CardFooter>
     </Card>
   );
+};
+
+Tracking.propTypes = {
+  privacySettings: PropTypes.object,
+  setPrivacySettings: PropTypes.func,
 };
 
 export default Tracking;
