@@ -41,7 +41,7 @@ On a more technical note we are also proud of being able to design an architectu
 
 ## What's next for agora 💭
 - Fine-tune our pop-up notifications that show up on external sites as reminders and recommendation
-- Incorporate webapp to a browser extension (add-on) for Chrome, Safari, Firefox, and Edge
+- Incorporate browser extension (add-on) for Safari, Firefox, and Edge
 
 ## References
 - To help with creating the Chrome add-on we used a tutorial found [here](https://web-highlights.com/blog/build-your-own-custom-chrome-history-extension-with-react-part-1-set-up/?source=post_page-----a6bc26127ccd).
