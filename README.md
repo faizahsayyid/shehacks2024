@@ -17,11 +17,13 @@ Our framework encourages users to 🍎 LEARN 📝:
 - **Reap the benefits** of varied learning content and respond to diverse content recommendations
 - **Navigate your learning journey** with agora
 
-agora makes it easy to learn the art of intentional living by seamlessly curating personalized lesson plans and guiding your digital experience. Fine-tuning your journey for a positive impact has never been easier.
+In addition to the web app, we have a functional Chrome add-on (second github repository). Using Redis and Chrome History API we are able to use recent user activity and local cache to come up interests of lessons to recommend. In addition this information is used to update the entertainment budget to track how much time is spent on social sites.
+
+agora is more than a website or an add-on. **agora is an experience to make it easy to learn the art of intentional living** by seamlessly curating personalized lesson plans and guiding your digital experience. Fine-tuning your journey for a positive impact has never been easier.
 
 ## How we built it 🔨
 
-agora is based off of Cloudflare's Workers AI and team-compiled databases sourced from (XXX) to recommend curated lesson plans. The front-end is created using Chakra UI and open-source cache to ensure privacy and security is supported through Redis. Design and prototype were first created on pen and paper and then replicated in Chakra UI.
+agora is based off of Cloudflare's Workers AI's databases to recommend curated lesson plans after prompting on web activity. The front-end is created using Chakra UI and open-source cache to ensure privacy and security is supported through Redis. Design and prototype were first created on pen and paper and then replicated in Chakra UI.
 
 ## Challenges we ran into ⚠️
 As a team we attempted to use many techstacks we had not previously known about and/or have never used before: Cloudflare's Worker AI, Redis and GoDaddy.  As with any new techstack, there was a learning curve on a time constraint but we were able to overcome integration challenges and troubleshoot unfamiliar issues. 
@@ -34,8 +36,13 @@ On a more technical note we are also proud of being able to design an architectu
 ## What we learned 🏫
 - Balancing the utilization of web activity for personalization with robust privacy measures requires a combination of thorough research, continuous learning, and iterative prototyping to ensure user trust and data security.
 - Learning with unfamiliar tech stacks with a team in a collaborative coding environments required us to dive deep into documentation and brainstorm how to ensure the integrity of our architecture remained intact without losing our adaptability
+- Our first time learning how to plan the architecture for a browser extension and we were able to manage our time to achieve our goal hacking it
 - Hacking requires a balance of sleep 😴 and hard work 😤
 
 ## What's next for agora 💭
 - Fine-tune our pop-up notifications that show up on external sites as reminders and recommendation
 - Incorporate webapp to a browser extension (add-on) for Chrome, Safari, Firefox, and Edge
+
+## References
+- To help with creating the Chrome add-on we used a tutorial found [here](https://web-highlights.com/blog/build-your-own-custom-chrome-history-extension-with-react-part-1-set-up/?source=post_page-----a6bc26127ccd).
+- Screentime images were sourced from our lovely community attending SheHacks+ 8 in person
